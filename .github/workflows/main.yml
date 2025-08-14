@@ -29,7 +29,7 @@ jobs:
     - name: Grant execute permission for Gradle wrapper
       run: chmod +x ./gradlew
 
-    - name: Stop any Gradle daemons
+    - name: Stop Gradle daemons
       run: ./gradlew --stop
 
     - name: Clean project
