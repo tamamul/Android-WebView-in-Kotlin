@@ -20,6 +20,10 @@ jobs:
         distribution: temurin
         java-version: 17
 
+    - name: List APK output
+      run: find . -name "*.apk"
+
+
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
 
