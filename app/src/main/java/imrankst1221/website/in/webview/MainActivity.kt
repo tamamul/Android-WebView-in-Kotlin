@@ -43,7 +43,7 @@ class MainActivity : Activity() {
     internal var mLoaded = false
 
     // set your custom url here
-    internal var URL = "https://ngabsen.smkmaarif9kebumen.sch.id/"
+    internal var URL = "https://absensi.smkmaarif9kebumen.sch.id/"
 
     //for attach files
     private var mCameraPhotoPath: String? = null
