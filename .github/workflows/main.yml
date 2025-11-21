@@ -24,12 +24,12 @@ jobs:
       uses: android-actions/setup-android@v2
       with:
         api-level: 33
-        build-tools: '33.0.1'  # samain sama yang diinstall otomatis
+        build-tools: '33.0.2' # versi terbaru yang stabil
 
     - name: Grant execute permission for Gradle wrapper
       run: chmod +x ./gradlew
 
-    - name: Clean project
+    - name: Clean project (opsional, bisa di-skip untuk speed)
       run: ./gradlew clean
 
     - name: Build Release APK
