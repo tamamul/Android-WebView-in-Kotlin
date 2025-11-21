@@ -18,7 +18,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            // tetap tambahkan proguardFiles meskipun minify false
+            // proguard tetap ditaruh walau minify false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -35,4 +35,8 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
+
+    // Tambahan wajib untuk Theme.AppCompat dan atribut colorPrimary/dll
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.10.1'
 }
