@@ -1,21 +1,14 @@
 buildscript {
-    ext.kotlin_version = '1.3.72'
+    ext.kotlin_version = "1.8.22"
     repositories {
-        google()
-        jcenter()
-        mavenCentral()
+        // kosongkan atau hanya gunakan minimal (but prefer settings.gradle)
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.4'
+        classpath 'com.android.tools.build:gradle:8.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
-        mavenCentral()
-    }
+    // Jangan tambahkan google()/mavenCentral() di sini — settings.gradle yang atur repo
 }
