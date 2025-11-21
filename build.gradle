@@ -1,8 +1,12 @@
+// root build.gradle — keep classpath and repositories for older buildscript resolution
 buildscript {
     ext.kotlin_version = "1.8.22"
+
     repositories {
-        // kosongkan atau hanya gunakan minimal (but prefer settings.gradle)
+        google()
+        mavenCentral()
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:8.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -10,5 +14,5 @@ buildscript {
 }
 
 allprojects {
-    // Jangan tambahkan google()/mavenCentral() di sini — settings.gradle yang atur repo
+    // repositories are preferred from settings.gradle; keep this empty to avoid duplication
 }
