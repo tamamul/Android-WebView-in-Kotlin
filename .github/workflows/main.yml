@@ -14,22 +14,11 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v3
 
-    - name: Set up JDK 17 for Android SDK
+    - name: Set up JDK 17 (required by AGP 8.x)
       uses: actions/setup-java@v3
       with:
         distribution: temurin
         java-version: 17
-
-
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v2
-
-    - name: Set up JDK 11 for Gradle Build
-      uses: actions/setup-java@v3
-      with:
-        distribution: temurin
-        java-version: 11
-
 
     - name: Setup Android SDK
       uses: android-actions/setup-android@v2
@@ -40,20 +29,17 @@ jobs:
     - name: Grant execute permission for Gradle wrapper
       run: chmod +x ./gradlew
 
-    - name: Stop Gradle daemons
-      run: ./gradlew --stop
-
     - name: Clean project
       run: ./gradlew clean
 
     - name: Build Release APK
-      run: ./gradlew assembleRelease
+      run: ./gradlew assembleRelease --stacktrace
 
     - name: List APK output
       run: find . -name "*.apk"
-      
+
     - name: Upload Release APK
       uses: actions/upload-artifact@v4
       with:
         name: mini-webview-apk
-        path: app/build/outputs/apk/release/app-release.apk
+        path: app/build/outputs/apk/release/app-release*.apk
