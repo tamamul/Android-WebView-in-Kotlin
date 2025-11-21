@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
         val settings = webView.settings
         settings.javaScriptEnabled = true
 
-        // WAJIB untuk AUTOFILL PASSWORD Google/Chrome
-        settings.savePassword = true
+        // Simpan form data dan password (Autofill tetap bekerja tanpa autofillClient)
         settings.saveFormData = true
         webView.isSaveEnabled = true
         webView.isFocusable = true
@@ -37,9 +36,6 @@ class MainActivity : AppCompatActivity() {
         settings.useWideViewPort = true
         settings.loadWithOverviewMode = true
         settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-
-        // Biarkan Chrome handle input login
-        webView.autofillClient = webView
 
         webView.webChromeClient = WebChromeClient()
 
