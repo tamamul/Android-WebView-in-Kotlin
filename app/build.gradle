@@ -1,70 +1,45 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    namespace "com.marsa.absen"
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.infixsoft.webview"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        applicationId "com.marsa.absen"
+        minSdk 21
+        targetSdk 33
+        versionCode 2
+        versionName "1.1"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
-    }
-
-    signingConfigs {
-        release {
-            storeFile file("absenmarsa-release.p12")
-            storePassword "absenmarsa123"
-            keyAlias "absenmarsa"
-            keyPassword "absenmarsa123"
-
-            v1SigningEnabled true
-            v2SigningEnabled true
-        }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
 
     compileOptions {
-        encoding = 'ISO-8859-1'
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.core:core-ktx:1.12.0"
+    implementation "com.google.android.material:material:1.10.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0') {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
-
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}
-
-repositories {
-    mavenCentral()
+    implementation "androidx.webkit:webkit:1.8.0" // WebView modern
 }
